@@ -109,7 +109,7 @@ pub const RECOMMENDED: &str = "n72ap-7E18";
 
 /// Order devices are listed in.
 pub const PRODUCT_ORDER: &[&str] =
-    &["iPod1,1", "iPod2,1", "iPod3,1", "iPod4,1", "iPhone1,1", "iPhone1,2", "iPhone2,1", "iPhone3,1", "iPad1,1"];
+    &["iPod1,1", "iPod2,1", "iPod3,1", "iPod4,1", "iPhone1,1", "iPhone1,2", "iPhone2,1", "iPhone3,1", "iPhone5,2", "iPad1,1"];
 
 impl Firmware {
     /// "3.1.3", or "4.2 beta 2" for a developer build.
@@ -321,6 +321,7 @@ pub fn short_product_name(product_type: &str) -> &'static str {
         "iPhone1,2" => "iPhone 3G",
         "iPhone2,1" => "iPhone 3GS",
         "iPhone3,1" => "iPhone 4",
+        "iPhone5,2" => "iPhone 5",
         "iPad1,1" => "iPad",
         _ => "iOS device",
     }
@@ -395,6 +396,21 @@ mod tests {
         }
         assert_eq!(catalog.find("n45ap-4B1").unwrap().support(), Support::DoesntStart);
         assert_eq!(catalog.find("m68ap-1A543a").unwrap().support(), Support::DoesntStart);
+    }
+
+    /// The iPhone 5 is listed, in order after the iPhone 4, and not claimed as working before anyone has run it.
+    #[test]
+    fn iphone_5_is_listed_untested() {
+        let catalog = Catalog::get();
+        let fw = catalog.find("n42ap-14G61").unwrap();
+        assert_eq!(fw.device_name(), "iPhone 5");
+        assert_eq!(fw.label(), "10.3.4");
+        assert_eq!(fw.support(), Support::Untested);
+        let devices = catalog.devices();
+        let types: Vec<&str> = devices.iter().map(|d| d.product_type.as_str()).collect();
+        let at = |p: &str| types.iter().position(|t| *t == p).unwrap();
+        assert!(at("iPhone3,1") < at("iPhone5,2") && at("iPhone5,2") < at("iPad1,1"), "{types:?}");
+        assert_eq!(crate::target::Target::of("iPhone5,2", "10.3.4").unwrap().arch, "armv7");
     }
 
     #[test]

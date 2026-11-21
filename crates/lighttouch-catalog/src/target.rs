@@ -15,7 +15,7 @@ impl Target {
     pub fn of(product_type: &str, ios: &str) -> Option<Self> {
         let arch = match product_type {
             "iPod1,1" | "iPhone1,1" | "iPhone1,2" | "iPod2,1" => "armv6",
-            "iPod3,1" | "iPhone2,1" | "iPad1,1" | "iPod4,1" | "iPhone3,1" => "armv7",
+            "iPod3,1" | "iPhone2,1" | "iPad1,1" | "iPod4,1" | "iPhone3,1" | "iPhone5,2" => "armv7",
             _ => return None,
         };
         let family = if product_type.starts_with("iPad") { "2" } else { "1" };

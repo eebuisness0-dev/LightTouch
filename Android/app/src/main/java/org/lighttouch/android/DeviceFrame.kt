@@ -51,6 +51,10 @@ internal data class DeviceSkin(
             Color(0xFF0B0B0C), listOf(Color(0xFFD9D9DC), Color(0xFF9A9AA0), Color(0xFFC7C7CC)))
         val iphone = DeviceSkin(62.1f, 115.5f, 9f, 6.1f, 20.3f, 49.9f, 74.8f, 105.6f, 10.5f,
             Color(0xFF0B0B0C), listOf(Color(0xFFC7C7CC), Color(0xFF6E6E73), Color(0xFFAEAEB2)))
+        // iPhone 5: 123.8 x 58.6 mm, 4" 640x1136 panel (49.9 x 88.7 mm).
+        val iphone5 = DeviceSkin(58.6f, 123.8f, 8f, 4.35f, 17.2f, 49.9f, 88.7f, 114.6f, 10f,
+            Color(0xFF0B0B0C), listOf(Color(0xFFC7C7CC), Color(0xFF6E6E73), Color(0xFFAEAEB2)),
+            power = 40.5f to 12.4f, volumeUp = 24f to 9f, volumeDown = 34.5f to 9f)
         // iPad (first generation): 242.8 x 189.7 mm, 9.7" 4:3 panel (197.1 x 147.8 mm) centred in the glass, a wide
         // aluminium rim, Sleep/Wake at the top right and the volume rocker on the right edge below the side switch.
         val ipad = DeviceSkin(189.7f, 242.8f, 13f, 20.95f, 22.85f, 147.8f, 197.1f, 231.4f, 11.5f,
@@ -60,6 +64,7 @@ internal data class DeviceSkin(
             board == null -> ipodTouch2
             board.startsWith("n81") -> ipodTouch4
             board.startsWith("k48") -> ipad
+            board.startsWith("n42") -> iphone5
             board.startsWith("m68") || board.startsWith("n82") || board.startsWith("n88") || board.startsWith("n90") -> iphone
             else -> ipodTouch2
         }

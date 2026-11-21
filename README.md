@@ -34,6 +34,7 @@ Both recorded on a Pixel 10. Click to watch on YouTube.
 | iPhone 3GS | 5.1.1 | **Tested**. Its microphone isn't supported yet (it records silence). |
 | iPhone 4 | 4.2.1, 4.3.5, 6.1.3 | **Tested** |
 | iPad | 5.1.1 | **Tested** |
+| iPhone 5 | 10.3.4 | **Listed, not yet preparable**: it is in the catalog and the device list, but LightTouch has no preparation recipe for the A6 yet (see [docs/TODO.md](docs/TODO.md)). |
 | iPod touch 1G, original iPhone | iPhone OS 1 | **Doesn't start yet**: they stop at a white screen after they are set up. |
 | Others in the [firmware catalog](Portable/firmware/firmware-catalog.json) | up to iOS 7 | Can be prepared and tried; not yet checked on LightTouch. [docs/COMPATIBILITY.md](docs/COMPATIBILITY.md) records what has been run. |
 

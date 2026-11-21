@@ -40,6 +40,7 @@ internal fun boardSpecs(board: String): BoardSpecs? = when (board) {
     "n88ap" -> BoardSpecs("Samsung S5L8920", "ARM Cortex-A8, 600 MHz", "PowerVR SGX535", "256 MB", "320 × 480")
     "n81ap" -> BoardSpecs("Apple A4", "ARM Cortex-A8, 800 MHz", "PowerVR SGX535", "256 MB", "640 × 960 (Retina)")
     "n90ap" -> BoardSpecs("Apple A4", "ARM Cortex-A8, 800 MHz", "PowerVR SGX535", "512 MB", "640 × 960 (Retina)")
+    "n42ap" -> BoardSpecs("Apple A6", "Apple Swift (ARMv7s), 1.3 GHz", "PowerVR SGX543MP3", "1 GB", "640 × 1136 (Retina)")
     "k48ap" -> BoardSpecs("Apple A4", "ARM Cortex-A8, 1 GHz", "PowerVR SGX535", "256 MB", "768 × 1024")
     else -> null
 }

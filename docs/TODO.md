@@ -20,6 +20,14 @@ tested only the iPad on 3.2, 3.2.2 and 4.2.1 and the iPod touch 2G on 2.2, 2.2.1
 Also Tested: the iPhone 4 on 4.2.1/4.3.5, the 3GS on 5.1.1 and the iPod touch 3G on 4.2.1. Not starting: the iPod
 touch 1G and the original iPhone (white screen, see COMPATIBILITY.md). iOS 7 skipped for now.
 
+- [ ] iPhone 5 (n42ap, iPhone5,2, 10.3.4/14G61): listed (catalog entry, device order, frame, Android specs), marked
+  untested. Preparing it needs the A6 recipe, which exists only in Light Touch for Mac (Swift: `FirmwareKit/N42`
+  and `FirmwareKit/A6`) and is still to be ported to `lighttouch-firmware`: `n42_recipe.rs`, the A6 volume bake,
+  PPN NAND (`A6NAND`), the restore stream and restore-ramdisk bundle, guest assets, `boot.rs` / `kboot.rs` N42
+  board (A6 DT, memory map, LwVM root) and `BootRecipe.iPhone5`. The engine side is qemu-ios's `iPhone-5`
+  machine (branch `iphone5-port` of eebuisness0-dev/qemu-ios; guest tools `it_initialize`, `it_mobilegestalt`).
+  `Board::N42` is not added yet, so `board_for` answers "no preparer for board n42ap". Light Touch for Mac's
+  catalog has only 14G61; qemu-ios also validated 10A405, 11A465, 12A365 and 13A344, which need catalog entries.
 - [ ] iPhone 4 6.1.3 and iPad 5.1.1 on a phone (prepared and checked on Linux only so far).
 - [ ] iPod touch 1G / original iPhone white screen: iBoot never boots the kernel after preparation.
 - [ ] iPhone 3GS microphone records silence (the setting attaches the mic only to the A4 devices).
